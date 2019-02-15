@@ -12,27 +12,20 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Setup Doctrine
-$configuration = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
-    $paths = [__DIR__ . '/entities'],
-    $isDevMode = true
-);
-
-// Setup connection parameters
-$connection_parameters = [
-    'dbname' => 'pluto',
-    'user' => 'root',
-    'password' => '1234',
-    'host' => 'mysql',
-    'driver' => 'pdo_mysql'
-];
-
-// Get the entity manager
-$entity_manager = Doctrine\ORM\EntityManager::create($connection_parameters, $configuration);
-
 use Symfony\Component\Console\Application;
 use Console\HelloCommand;
+use Console\ClearCacheCommand;
+use Console\UserCreateCommand;
+use Console\UserReadCommand;
+use Console\UserUpdateCommand;
+use Console\UserDeleteCommand;
 
 $app = new Application('Console App', 'v1.0.0');
 $app->add(new HelloCommand());
+$app->add(new ClearCacheCommand());
+$app->add(new UserCreateCommand());
+$app->add(new UserReadCommand());
+$app->add(new UserUpdateCommand());
+$app->add(new UserDeleteCommand());
+
 $app->run();
