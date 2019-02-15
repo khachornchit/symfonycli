@@ -1,0 +1,16 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Console\\": "src/"
+    },
+    "classmap": [
+      "src"
+    ]
+  },
+  "require": {
+    "symfony/console": "^4.2",
+    "doctrine/orm": "^2.6"
+  },
+  "require-dev": {
+  }
+}
